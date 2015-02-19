@@ -21,14 +21,18 @@ Platform.prototype.draw = function(){
 	ctx.fillRect(this.x, this.y, this.width, this.height);
 }
 
+Platform.prototype.update = function(){
+	this.x += 10 * moveDir;
+	if(this.x + this.width > canvas.width)
+		moveDir *= -1;
+	if(this.x < 0)
+		moveDir *= -1;
+}
+
 var platform = new Platform(150, 300, 200, 20);
 var moveDir = 1;
 setInterval(function(){
-	platform.x += 10 * moveDir;
-	if(platform.x + platform.width > 400)
-		moveDir *= -1;
-	if(platform.x < 0)
-		moveDir *= -1;
+	platform.update();
 	clearCanvas();
 	platform.draw();
 }, 100);
