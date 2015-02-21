@@ -34,8 +34,7 @@ var gameloop = function(){
 	handleInput();
 	update();
 	draw();
-	//hope for a 30fps loop
-	setTimeout(gameloop, 1000/30);
+	requestAnimationFrame(gameloop);
 };
 var bindInput = function(){
 	document.body.addEventListener("keydown", function (e) {
