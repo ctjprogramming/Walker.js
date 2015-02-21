@@ -30,7 +30,8 @@ Player.prototype.jump = function(){
 	}
 };
 Player.prototype.update = function(){
-	this.velX *= this.friction;
+	if(!this.isJumping)
+		this.velX *= this.friction;
 	this.x += this.velX;
 
 	if(!this.isOnPlatform())
@@ -71,7 +72,7 @@ Player.prototype.isOnPlatform = function(){
 	return false;
 };
 Player.prototype.applyGravity = function(){
-	var speed = 6;
+	var speed = 4.5;
 	if(this.velY < speed)
 		this.velY += 1 * this.friction;
 	this.y += this.velY;
