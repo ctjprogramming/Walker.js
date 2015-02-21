@@ -33,6 +33,7 @@ Player.prototype.update = function(){
 	if(!this.isJumping)
 		this.velX *= this.friction;
 	this.x += this.velX;
+	this.x = Math.max(0, Math.min(this.x, canvas.width-this.size));
 
 	if(!this.isOnPlatform())
 		this.applyGravity();
@@ -79,7 +80,7 @@ Player.prototype.applyGravity = function(){
 
 	if(this.velY > 0 && this.isJumping)
 		this.isJumping = false;
-	if(this.y > 400)
+	if(this.y > canvas.height)
 		this.respawn();
 };
 Player.prototype.respawn = function(){
